@@ -103,14 +103,13 @@ class NetworkPluginAuditor {
 					$blog_details = get_blog_details( $blog_id, true );
 
 					if ( isset( $blog_details->siteurl, $blog_details->blogname ) ) {
-						$blog_url   = $blog_details->siteurl;
 						$blog_name  = $blog_details->blogname;
 						$blog_state = '';
 						$style      = '';
 
 						if ( $blog_details->archived || $blog_details->deleted ) {
 
-							$style = 'style="text-decoration: line-through;" ';
+							$style = 'text-decoration: line-through;';
 
 							$status_list = array(
 								'archived' => array( 'site-archived', __( 'Archived' ) ),
@@ -121,7 +120,6 @@ class NetworkPluginAuditor {
 							$blog_states = array();
 							foreach ( $status_list as $status => $col ) {
 								if ( get_blog_status( $blog_details->blog_id, $status ) === 1 ) {
-									$class         = $col[0];
 									$blog_states[] = $col[1];
 								}
 							}
@@ -136,7 +134,7 @@ class NetworkPluginAuditor {
 							}
 						}
 
-						$output .= '<li><nobr><a ' . $style . ' title="' . esc_attr( sprintf( __( 'Manage plugins on %s', 'network-plugin-auditor' ), $blog_name ) ) . '" href="' . esc_url( admin_url( 'plugins.php' ) ) . '">' . esc_html( $blog_name ) . '</a>' . esc_html( $blog_state ) . '</nobr></li>';
+						$output .= '<li><nobr><a style="' . esc_attr( $style ) . '" title="' . esc_attr( sprintf( __( 'Manage plugins on %s', 'network-plugin-auditor' ), $blog_name ) ) . '" href="' . esc_url( admin_url( 'plugins.php' ) ) . '">' . esc_html( $blog_name ) . '</a>' . esc_html( $blog_state ) . '</nobr></li>';
 					}
 
 					unset( $blog_details );
@@ -383,7 +381,7 @@ class NetworkPluginAuditor {
 	/**
 	 * Determine if the given theme is active on a list of blogs.
 	 *
-	 * @param string    $theme_key Theme slug.
+	 * @param string $theme_key Theme slug.
 	 *
 	 * @return array|mixed
 	 */
@@ -450,7 +448,6 @@ class NetworkPluginAuditor {
 
 		// Is this theme listed in the active blogs?
 		return null !== $active_theme && ( $active_theme === $theme_key );
-
 	}
 
 	/**
