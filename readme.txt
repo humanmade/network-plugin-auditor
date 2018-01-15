@@ -2,9 +2,9 @@
 Contributors: ksemel
 Tags: network, multisite, plugin management, theme management, admin
 Donate Link: http://bonsaibudget.com/donate/
-Requires at least: 3.2.1
-Tested up to: 4.6.1
-Stable tag: 1.10.1
+Requires at least: 4.6
+Tested up to: 4.9.1
+Stable tag: 1.2.0
 
 For multisite/network installations only.  Adds columns to your network admin to show which sites are using each plugin and theme.
 
