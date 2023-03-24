@@ -308,7 +308,7 @@ class NetworkPluginAuditor {
 		$blog_ids = get_sites(
 			array(
 				'fields'  => 'ids',
-				'number'  => 100,
+				'number'  => 500,
 				'deleted' => 0,
 			)
 		);
@@ -390,7 +390,7 @@ class NetworkPluginAuditor {
 		$blog_ids = get_sites(
 			array(
 				'fields'  => 'ids',
-				'number'  => 100,
+				'number'  => 500,
 				'deleted' => 0,
 			)
 		);
