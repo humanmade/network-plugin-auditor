@@ -50,7 +50,6 @@ class NetworkPluginAuditor {
 		// Clear the transients when plugin or themes change.
 		add_action( 'activated_plugin', array( $this, 'clear_plugin_transient' ), 10, 2 );
 		add_action( 'deactivated_plugin', array( $this, 'clear_plugin_transient' ), 10, 2 );
-		add_action( 'switch_theme', array( $this, 'clear_theme_transient' ), 10, 2 );
 	}
 
 	/**
