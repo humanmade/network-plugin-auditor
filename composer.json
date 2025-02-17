@@ -1,8 +1,8 @@
 {
 	"name": "humanmade/network-plugin-auditor",
-	"type": "wordpress-muplugin",
 	"description": "Which of your sites have each plugin and theme activated.",
 	"license": "GPL-2.0-or-later",
+	"type": "wordpress-muplugin",
 	"authors": [
 		{
 			"name": "Human Made",
