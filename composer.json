@@ -1,0 +1,21 @@
+{
+	"name": "humanmade/network-plugin-auditor",
+	"description": "Which of your sites have each plugin and theme activated.",
+	"license": "GPL-2.0-or-later",
+	"type": "wordpress-muplugin",
+	"authors": [
+		{
+			"name": "Human Made",
+			"email": "hello@humanmade.com"
+		},
+		{
+			"name": "Katherine Semel",
+			"email": "ksemel@gmail.com"
+		}
+	],
+	"autoload": {
+		"files": [
+			"network-plugin-auditor.php"
+		]
+	}
+}
