@@ -23,9 +23,15 @@ add_action( 'plugins_loaded', function() {
 	$plugin->init();
 
 	if ( defined( 'WP_CLI' ) && WP_CLI ) {
-		require_once __DIR__ . '/inc/class-audit-plugins-command.php';
+		require_once __DIR__ . '/inc/class-base-command.php';
+		require_once __DIR__ . '/inc/class-plugins-command.php';
+		require_once __DIR__ . '/inc/class-themes-command.php';
 		WP_CLI::add_command( 'network-plugin-auditor plugins', [
 			__NAMESPACE__ . '\\WPCLI\\Plugins_Command',
+			'run',
+		] );
+		WP_CLI::add_command( 'network-plugin-auditor themes', [
+			__NAMESPACE__ . '\\WPCLI\\Themes_Command',
 			'run',
 		] );
 	}
