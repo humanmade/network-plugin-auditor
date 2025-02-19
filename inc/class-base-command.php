@@ -19,6 +19,8 @@ use WP_Site;
  */
 abstract class Base_Command {
 	protected array $sites;
+	protected string $order_by;
+	protected string $order_by_direction;
 
 	/**
 	 * Executes the command to retrieve and store all sites in a multisite installation.
@@ -118,15 +120,10 @@ abstract class Base_Command {
 		}
 
 		// Sort the table
-		if ( $order_by === 'active-sites' ) {
-			usort( $table, static function ( $a, $b ) {
-				return $b['Active Sites'] <=> $a['Active Sites'];
-			} );
-		} else {
-			usort( $table, static function ( $a, $b ) use ( $column_name ) {
-				return strcasecmp( $a[ $column_name ], $b[ $column_name ] );
-			} );
-		}
+		$this->order_by = ( $order_by === 'active-sites' ) ? 'Active Sites' : $column_name;
+		$this->order_by_direction = ( $order_by === 'active-sites' ) ? 'desc' : 'asc';
+
+		usort( $table, [ $this, 'order_by' ] );
 
 		return $table;
 	}
@@ -147,5 +144,20 @@ abstract class Base_Command {
 	 */
 	protected function after_count() : void {
 		// Optional
+	}
+
+	/**
+	 * Compares two elements based on the specified order criteria.
+	 *
+	 * @param array $a The first element to compare.
+	 * @param array $b The second element to compare.
+	 *
+	 * @return int Returns 0 if both elements are equal, a positive value if $a should come after $b,
+	 *             or a negative value if $a should come before $b, depending on the order direction.
+	 */
+	protected function order_by( $a, $b ) : int {
+		$result = strcasecmp( $b[ $this->order_by ], $a[ $this->order_by ] );
+
+		return $this->order_by_direction === 'asc' ? - $result : $result;
 	}
 }
