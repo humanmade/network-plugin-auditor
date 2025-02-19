@@ -6,10 +6,10 @@
  * that operate on multisite installations. It includes methods to fetch site data,
  * process plugins or themes, and generate tabular output with various filters.
  *
- * @package NetworkPluginAuditor\WPCLI
+ * @package NetworkPluginAuditor\Commands
  */
 
-namespace NetworkPluginAuditor\WPCLI;
+namespace NetworkPluginAuditor\Commands;
 
 use WP_CLI;
 use WP_Site;

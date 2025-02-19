@@ -5,10 +5,10 @@
  * This class adds a custom command to WP-CLI to list all themes in a multisite network
  * and display how many sites they are active on, with sorting and filtering options.
  *
- * @package NetworkPluginAuditor\WPCLI
+ * @package NetworkPluginAuditor\Commands
  */
 
-namespace NetworkPluginAuditor\WPCLI;
+namespace NetworkPluginAuditor\Commands;
 
 use NetworkPluginAuditor\NetworkPluginAuditor;
 use WP_CLI;

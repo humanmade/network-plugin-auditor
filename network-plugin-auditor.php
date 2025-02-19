@@ -27,11 +27,11 @@ add_action( 'plugins_loaded', function() {
 		require_once __DIR__ . '/inc/class-plugins-command.php';
 		require_once __DIR__ . '/inc/class-themes-command.php';
 		WP_CLI::add_command( 'network-plugin-auditor plugins', [
-			__NAMESPACE__ . '\\WPCLI\\Plugins_Command',
+			__NAMESPACE__ . '\\Commands\\Plugins_Command',
 			'run',
 		] );
 		WP_CLI::add_command( 'network-plugin-auditor themes', [
-			__NAMESPACE__ . '\\WPCLI\\Themes_Command',
+			__NAMESPACE__ . '\\Commands\\Themes_Command',
 			'run',
 		] );
 	}
