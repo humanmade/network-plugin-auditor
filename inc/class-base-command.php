@@ -72,17 +72,8 @@ abstract class Base_Command {
 			$plugins_or_themes = $this->before_count( $site );
 
 			foreach ( $plugins_or_themes as $plugin_or_theme ) {
-				if ( isset( $active_counts[ $plugin_or_theme ] ) ) {
-					$active_counts[ $plugin_or_theme ] ++;
-				} else {
-					$active_counts[ $plugin_or_theme ] = 1;
-				}
-
-				if ( isset( $active_sites[ $plugin_or_theme ] ) ) {
-					$active_sites[ $plugin_or_theme ][] = $site->blog_id;
-				} else {
-					$active_sites[ $plugin_or_theme ] = [ $site->blog_id ];
-				}
+				$active_counts[ $plugin_or_theme ] = ( $active_counts[ $plugin_or_theme ] ?? 0 ) + 1;
+				$active_sites[ $plugin_or_theme ][] = $site->blog_id;
 			}
 
 			$this->after_count();
