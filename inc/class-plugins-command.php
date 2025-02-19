@@ -77,19 +77,8 @@ class Plugins_Command extends Base_Command {
 	 * @return array List of active plugins for the specified site.
 	 */
 	protected function before_count( mixed $site ) : array {
-		switch_to_blog( $site->blog_id );
-
-		$active_plugins = get_option( 'active_plugins', [] );
+		$active_plugins = get_blog_option( $site->blog_id, 'active_plugins', [] );
 
 		return $active_plugins;
-	}
-
-	/**
-	 * Finalizes operations after performing a count action.
-	 *
-	 * @return void
-	 */
-	protected function after_count() : void {
-		restore_current_blog();
 	}
 }
