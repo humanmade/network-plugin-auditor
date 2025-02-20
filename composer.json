@@ -12,10 +12,5 @@
 			"name": "Katherine Semel",
 			"email": "ksemel@gmail.com"
 		}
-	],
-	"autoload": {
-		"files": [
-			"network-plugin-auditor.php"
-		]
-	}
+	]
 }
