@@ -67,10 +67,9 @@ class Plugins_Command extends Base_Command {
 	}
 
 	/**
-	 * Retrieves the list of active plugins for a given site.
+	 * Retrieves the list of site-active and network-active plugins for a given site.
 	 *
-	 * This method switches to the specified site context, fetches its active plugins from the options table,
-	 * and then returns the list of active plugins.
+	 * Fetches the site's active plugins and combines them with the network-active plugins.
 	 *
 	 * @param mixed $site The site object or data containing the blog ID of the site.
 	 *
@@ -78,7 +77,8 @@ class Plugins_Command extends Base_Command {
 	 */
 	protected function before_count( mixed $site ) : array {
 		$active_plugins = get_blog_option( $site->blog_id, 'active_plugins', [] );
+		$network_active_plugins = array_keys( get_site_option( 'active_sitewide_plugins', [] ) );
 
-		return $active_plugins;
+		return array_unique( array_merge( $active_plugins, $network_active_plugins ) );
 	}
 }
